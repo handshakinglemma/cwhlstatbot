@@ -59,7 +59,7 @@ def tweet(stats, player_dicts, abbreviations, prefix):
 
     # Get the data for the tweet.
     stat, player, team, tied, category = most_stat(stats, player_dicts)
-
+    
     # Make the tweet.
     if len(tied) == 0:
         tweet = prefix[category] + ' ' + abbreviations[category] + ':' + '\n' + player + ' (' + team + ') with ' + str(stat)

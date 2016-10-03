@@ -2,8 +2,16 @@ from read_file import read_file
 import most_stat_per
 import most_stat
 import team_most_per
+import random
+from secret import *
+import tweepy
+
 
 def main():
+
+    auth = tweepy.OAuthHandler(C_KEY, C_SECRET)  
+    auth.set_access_token(A_TOKEN, A_TOKEN_SECRET)  
+    api = tweepy.API(auth) 
 
     skaters = read_file('skaters.csv')
     goalies = read_file('goalies.csv')
@@ -19,24 +27,27 @@ def main():
 
     prefix = {'#':'Highest', 'GP':'Most', 'MIN':'Most', 'W':'Most', 'L':'Most', 'OTL':'Most', 'SOL':'Most', 'SO':'Most', 'GA':'Most', 'GAA':'Highest', 'SV':'Most', 'SV%':'Highest', 'G':'Most', 'A':'Most', 'PTS':'Most', '+/-':'Highest', 'PIM':'Most', 'PP':'Most', 'PPA':'Most', 'SH':'Most', 'SHA':'Most', 'GWG':'Most'}
 
-    
-    s1 = most_stat_per.tweet(skater_stat_list, skaters, abbreviations)
-    print(s1)
 
-    g1 = most_stat_per.tweet(goalie_stat_list, goalies, abbreviations)
-    print(g1)
+    # Generate a random number to decide what kind of stat to tweet.
+    epsilon = random.random()
+    # Total number of possible stats to tweet.
+    total = 6
 
-    s2 = most_stat.tweet(skater_stat_list, skaters, abbreviations, prefix)
-    print(s2)
+    # Make the tweet!
+    if epsilon < (1 / total):
+        tweet = most_stat_per.tweet(skater_stat_list, skaters, abbreviations)
+    elif epsilon < (2 / total):
+        tweet = most_stat_per.tweet(goalie_stat_list, goalies, abbreviations)
+    elif epsilon < (3 / total):
+        tweet = most_stat.tweet(skater_stat_list, skaters, abbreviations, prefix)
+    elif epsilon < (4 / total):
+        tweet = most_stat.tweet(goalie_stat_list, goalies, abbreviations, prefix)
+    elif epsilon < (5 / total):
+        tweet = team_most_per.tweet(skater_stat_list, skaters, abbreviations)
+    else:
+        tweet = team_most_per.tweet(goalie_stat_list, goalies, abbreviations)
 
-    g2 = most_stat.tweet(goalie_stat_list, goalies, abbreviations, prefix)
-    print(g2)
-
-    s3 = team_most_per.tweet(skater_stat_list, skaters, abbreviations)
-    print(s3)
-
-    g3 = team_most_per.tweet(goalie_stat_list, goalies, abbreviations)
-    print(g3)
-    
-    
+    # Tweet the tweet!
+    api.update_status(tweet)
+        
 main()
