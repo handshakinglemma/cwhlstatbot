@@ -79,13 +79,13 @@ def tweet(stats, player_dicts, abbreviations):
     if len(tied) == 0:
         # If the stat has more than 5 decimal places, truncate it.
         if abs(Decimal(str(stat)).as_tuple().exponent) > 5:
-            tweet = ('Most ' + abbreviations[stat1] + ' per ' + abbreviations[stat2] + ':' + '\n' + player + ' (' + team + ') with ' + '{:.3f}' + ' ' + stat1 + ' per ' + stat2).format(stat)
+            tweet = ('2015-16 Most ' + abbreviations[stat1] + ' per ' + abbreviations[stat2] + ':' + '\n' + player + ' (' + team + ') with ' + '{:.3f}' + ' ' + stat1 + ' per ' + stat2).format(stat)
         else:
-            tweet = 'Most ' + abbreviations[stat1] + ' per ' + abbreviations[stat2] + ':' + '\n' + player + ' (' + team + ') with ' + str(stat) + ' ' + stat1 + ' per ' + stat2
+            tweet = '2015-16 Most ' + abbreviations[stat1] + ' per ' + abbreviations[stat2] + ':' + '\n' + player + ' (' + team + ') with ' + str(stat) + ' ' + stat1 + ' per ' + stat2
     elif len(tied) == 2:
         if abs(Decimal(str(stat)).as_tuple().exponent) > 5:
-            tweet = ('Most ' + abbreviations[stat1] + ' per ' + abbreviations[stat2] + ':' + '\n' + player + ' (' + team + ') and ' + tied[0] + ' (' + tied[1] + ') with ' + '{:.3f}' + ' ' + stat1 + ' per ' + stat2).format(stat)
+            tweet = ('2015-16 Most ' + abbreviations[stat1] + ' per ' + abbreviations[stat2] + ':' + '\n' + player + ' (' + team + ') and ' + tied[0] + ' (' + tied[1] + ') with ' + '{:.3f}' + ' ' + stat1 + ' per ' + stat2).format(stat)
         else:
-            tweet = 'Most ' + abbreviations[stat1] + ' per ' + abbreviations[stat2] + ':' + '\n' + player + ' (' + team + ') and ' + tied[0] + ' (' + tied[1] + ') with ' + str(stat) + ' ' + stat1 + ' per ' + stat2
+            tweet = '2015-16 Most ' + abbreviations[stat1] + ' per ' + abbreviations[stat2] + ':' + '\n' + player + ' (' + team + ') and ' + tied[0] + ' (' + tied[1] + ') with ' + str(stat) + ' ' + stat1 + ' per ' + stat2
     
     return tweet

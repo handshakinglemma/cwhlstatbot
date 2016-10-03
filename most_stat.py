@@ -62,8 +62,8 @@ def tweet(stats, player_dicts, abbreviations, prefix):
     
     # Make the tweet.
     if len(tied) == 0:
-        tweet = prefix[category] + ' ' + abbreviations[category] + ':' + '\n' + player + ' (' + team + ') with ' + str(stat)
+        tweet = '2015-16 ' + prefix[category] + ' ' + abbreviations[category] + ':' + '\n' + player + ' (' + team + ') with ' + str(stat)
     elif len(tied) == 2:
-        tweet = prefix[category] + ' ' + abbreviations[category] + ':' + '\n' + player + ' (' + team + ') and ' + tied[0] + ' (' + tied[1] + ') with ' + str(stat)
+        tweet = '2015-16 ' + prefix[category] + ' ' + abbreviations[category] + ':' + '\n' + player + ' (' + team + ') and ' + tied[0] + ' (' + tied[1] + ') with ' + str(stat)
 
     return tweet
