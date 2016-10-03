@@ -44,7 +44,7 @@ def most_stat(stats, player_dicts):
 
         # If there is more than one tied player or if no player was
         # found, then recalculate.
-        if len(tied_players) > 2 or most_player == None:
+        if len(tied_players) != 0 or most_player == None:
             most, most_player, most_team, tied_players, category = most_stat(stats, player_dicts)
 
     return most, most_player, most_team, tied_players, category
