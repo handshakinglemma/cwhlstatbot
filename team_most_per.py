@@ -96,7 +96,7 @@ def tweet(stats, player_dicts, abbreviations):
     stat, team, tied, stat1, stat2 = team_most_per(stats, player_dicts)
 
     # Team abbreviations key.
-    teams = ['Boston Blades', 'Brampton Thunder', 'Calgary Thunder', 'Canadiennes de Montreal', 'Toronto Furies']
+    teams = ['Boston Blades', 'Brampton Thunder', 'Calgary Inferno', 'Canadiennes de Montreal', 'Toronto Furies']
     
     # Make the tweet.
 
